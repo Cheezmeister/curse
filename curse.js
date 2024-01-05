@@ -93,12 +93,13 @@ if (process && process.argv) {
     }
   }
   if (process.argv.length > 2) {
-    if (process.argv[2] == '-h') {
-      let cmd = `${process.argv[0]} ${process.argv[1]}`;
+    const [interpreter, file, numberOfCurses] = process.argv;
+    if (numberOfCurses == '-h') {
+      let cmd = `${interpreter} ${file}`;
       console.log(`Usage: ${cmd} [-h] [numberOfCurses]`);
       process.exit(1);
     }
-    printCurses(parseInt(process.argv[2]) || 0);
+    printCurses(parseInt(numberOfCurses) || 0);
   } else {
     const readline = require('readline');
     const io = readline.createInterface({
